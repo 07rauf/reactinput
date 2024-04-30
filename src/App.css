@@ -2,13 +2,15 @@
     width: 200px;
 }
 .divmain{
-    width: 30%;
+    width: 50%;
     height: 300px;
     border: 1px solid black;
-    
+    display: flex;
+    flex-direction:
 }
 .divmainimg{    
     width: 200px;
+    height: 150px;
 }
 .divv{
   width: 300px;
@@ -20,4 +22,9 @@
 .container{
     display: flex;
     justify-content: space-between;
+}
+.total{
+   position: fixed;
+   top:29%;
+   right:22%;
 }
