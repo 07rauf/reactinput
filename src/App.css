@@ -1,5 +1,6 @@
 .img{
     width: 200px;
+    height: 120px;
 }
 .divmain{
     width: 50%;
@@ -11,13 +12,17 @@
 .divmainimg{    
     width: 200px;
     height: 150px;
+    margin-left: 25px;
 }
 .divv{
-  width: 300px;
+    height: 220px;
+  width: 200px;
+  border: 1px solid black;
+  background-color: black ;
 }
 .hidebtn{
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
 }
 .container{
     display: flex;
@@ -26,5 +31,24 @@
 .total{
    position: fixed;
    top:29%;
-   right:22%;
+   right:28%;
+}
+.name{
+    color: white;
+    margin-left: 40px;
+}
+.price{
+    color: white;
+    margin-left: 70px;
+}
+.addbutton{
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.ordercount{
+    margin-left: 40px;
+}
+.deletebutton{
+    border-radius: 10px;
+    margin-left: 20px;
 }

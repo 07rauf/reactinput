@@ -13,7 +13,7 @@ function App() {
 
     const [totalPrice, setTotalPrice] = useState(0); 
     const [isDivVisible, setIsDivVisible] = useState(false);
-
+    const [deleteHandle, setDeletehandle]=useState(0)
     const handleAddTask = (id, price) => {
         const clickedMission = missions.find(mission => mission.id === id);
         if (clickedMission) {
@@ -24,21 +24,33 @@ function App() {
                 )
             ); 
         }
-    };
-
+    };  
+    const handleDeleteTask = (id, price) => {
+        const clickedMissions = missions.find(mission => mission.id === id);
+        if (clickedMissions) {
+            setTotalPrice(prevPrice => prevPrice - price); 
+            setMissions(prevMissions => 
+                prevMissions.map(mission => 
+                    mission.id === id ? {...mission, clickCount: mission.clickCount -1} : mission
+                )
+            ); 
+        }
+    };  
+   
     const toggleDivVisibility = () => {
         setIsDivVisible(prev => !prev);
     };
-
+  
     return (
         <div className='container'>
-            {missions.map(mission => (
+            {missions.map(mission => (   
                 mission.isVisible &&
                 <div className='divv' key={mission.id}>
                     <img className='img' src={mission.image} alt={`pizza ${mission.id}`} />
-                    <div>{mission.name}</div>
-                    <div>{`$${mission.price}`}</div>
-                    <button onClick={() => handleAddTask(mission.id, mission.price)}>Add Task</button>
+                    <div className='name'>{mission.name}</div>
+                    <div className='price'>{`$${mission.price}`}</div>
+                    <button className='deletebutton' onClick={()=> handleDeleteTask(mission.id, mission.price)}>Delete </button>
+                    <button className='addbutton' onClick={() => handleAddTask(mission.id, mission.price)}>Add Order</button>
                 </div>
             ))}
             <br />
@@ -48,7 +60,7 @@ function App() {
                         mission.clickCount > 0 &&
                         <div key={mission.id}>
                             <img className='divmainimg' src={mission.image} alt={`pizza ${mission.id}`} />
-                            <div>Neçə ədəd sifariş etmisiniz: {mission.clickCount}</div> 
+                            <div className='ordercount'>Neçə ədəd sifariş etmisiniz: {mission.clickCount}</div> 
                         </div>
                     ))}
                     <div className='total'>Total Price: ${totalPrice}</div>
